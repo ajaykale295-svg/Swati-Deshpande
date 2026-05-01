@@ -28,7 +28,7 @@ const SITE = {
     phone:     "8320941691",
     email:     "swatideshpande264@gmail.com",
     location:  "PCMC / Pune, Maharashtra",
-    whatsapp:  "918320941691",          // country code + number, no +
+    whatsapp:  "+918320941691",          // country code + number, no +
     instagram: "swatideshpande264",     // handle only, no @
   },
 
