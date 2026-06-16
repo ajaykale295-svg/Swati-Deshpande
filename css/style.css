@@ -1,5 +1,6 @@
+
 /* ============================================================
-   SWATI DESHPANDE DESIGNS â€” STYLESHEET
+   SWATI DESHPANDE DESIGNS — STYLESHEET
    ============================================================
    To change colors: edit the CSS variables in :root below.
    To change fonts: update the Google Fonts link in each HTML
@@ -8,7 +9,7 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap');
 
-/* â”€â”€ CSS VARIABLES (edit these to retheme the site) â”€â”€ */
+/* ── CSS VARIABLES (edit these to retheme the site) ── */
 :root {
   --color-bg:        #FAF8F5;
   --color-bg-alt:    #F2EDE6;
@@ -30,7 +31,7 @@
   --shadow-lg: 0 12px 50px rgba(0,0,0,0.14);
 }
 
-/* â”€â”€ RESET & BASE â”€â”€ */
+/* ── RESET & BASE ── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 html { scroll-behavior: smooth; }
@@ -49,7 +50,7 @@ img { max-width: 100%; height: auto; display: block; }
 a   { color: inherit; text-decoration: none; }
 ul  { list-style: none; }
 
-/* â”€â”€ TYPOGRAPHY â”€â”€ */
+/* ── TYPOGRAPHY ── */
 h1, h2, h3, h4 {
   font-family: var(--font-heading);
   font-weight: 400;
@@ -73,7 +74,7 @@ p { margin-bottom: 1.2rem; color: var(--color-text); }
   display: block;
 }
 
-/* â”€â”€ LAYOUT â”€â”€ */
+/* ── LAYOUT ── */
 .container {
   width: 100%;
   max-width: var(--max-width);
@@ -83,7 +84,7 @@ p { margin-bottom: 1.2rem; color: var(--color-text); }
 
 section { padding: 6rem 0; }
 
-/* â”€â”€ NAVIGATION â”€â”€ */
+/* ── NAVIGATION ── */
 .nav {
   position: fixed;
   top: 0; left: 0; right: 0;
@@ -106,7 +107,7 @@ section { padding: 6rem 0; }
   padding: 0 2rem;
 }
 
-/* Logo â€” white at top, dark after scroll */
+/* Logo — white at top, dark after scroll */
 .nav__logo {
   font-family: var(--font-heading);
   font-size: 1.5rem;
@@ -124,7 +125,7 @@ section { padding: 6rem 0; }
   align-items: center;
 }
 
-/* Links â€” white at top, dark after scroll */
+/* Links — white at top, dark after scroll */
 .nav__links a {
   font-size: 0.8rem;
   font-weight: 400;
@@ -146,7 +147,7 @@ section { padding: 6rem 0; }
   transition: width var(--transition);
 }
 
-/* Hover & active â€” orange + underline, both states */
+/* Hover & active — orange + underline, both states */
 .nav__links a:hover,
 .nav__links a.active {
   color: var(--color-accent);
@@ -154,12 +155,24 @@ section { padding: 6rem 0; }
 .nav__links a:hover::after,
 .nav__links a.active::after { width: 100%; }
 
-/* Hamburger icon â€” white at top, dark after scroll */
+/* Hamburger icon — white at top, dark after scroll */
 .nav__hamburger span {
   background: #FFFFFF;
   transition: background var(--transition);
 }
 .nav.scrolled .nav__hamburger span { background: var(--color-dark); }
+
+/* ── HOME PAGE OVERRIDE ──────────────────────────────────────
+   Home page has a light hero background, so nav starts dark.
+   All other pages have dark heroes so nav starts white (above).
+─────────────────────────────────────────────────────────── */
+body[data-page="home"] .nav__logo { color: var(--color-dark); }
+body[data-page="home"] .nav__links a { color: var(--color-text); }
+body[data-page="home"] .nav__hamburger span { background: var(--color-dark); }
+
+/* Once scrolled, same dark style applies everywhere */
+body[data-page="home"] .nav.scrolled .nav__logo { color: var(--color-dark); }
+body[data-page="home"] .nav.scrolled .nav__links a { color: var(--color-text); }
 
 .nav__hamburger {
   display: none;
@@ -175,7 +188,7 @@ section { padding: 6rem 0; }
   transition: var(--transition);
 }
 
-/* â”€â”€ BUTTONS â”€â”€ */
+/* ── BUTTONS ── */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -211,7 +224,7 @@ section { padding: 6rem 0; }
   color: var(--color-white);
 }
 
-/* â”€â”€ FLOATING SOCIAL BUTTONS â”€â”€ */
+/* ── FLOATING SOCIAL BUTTONS ── */
 .float-social {
   position: fixed;
   bottom: 2rem;
@@ -239,7 +252,7 @@ section { padding: 6rem 0; }
 .float-whatsapp { background: #25D366; }
 .float-instagram { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%); }
 
-/* â”€â”€ HERO â”€â”€ */
+/* ── HERO ── */
 .hero {
   min-height: 100vh;
   display: flex;
@@ -363,7 +376,7 @@ section { padding: 6rem 0; }
   letter-spacing: 0.08em;
 }
 
-/* â”€â”€ SECTION HEADERS â”€â”€ */
+/* ── SECTION HEADERS ── */
 .section-header {
   text-align: center;
   max-width: 600px;
@@ -380,7 +393,7 @@ section { padding: 6rem 0; }
   margin: 1.2rem auto;
 }
 
-/* â”€â”€ SERVICES GRID â”€â”€ */
+/* ── SERVICES GRID ── */
 .services-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -425,7 +438,7 @@ section { padding: 6rem 0; }
   margin: 0;
 }
 
-/* â”€â”€ PROJECTS FILTER â”€â”€ */
+/* ── PROJECTS FILTER ── */
 .filter-bar {
   display: flex;
   gap: 0.6rem;
@@ -452,7 +465,7 @@ section { padding: 6rem 0; }
   color: var(--color-white);
 }
 
-/* â”€â”€ PROJECTS GRID â”€â”€ */
+/* ── PROJECTS GRID ── */
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
@@ -517,7 +530,7 @@ section { padding: 6rem 0; }
   letter-spacing: 0.06em;
 }
 
-/* â”€â”€ ABOUT PAGE â”€â”€ */
+/* ── ABOUT PAGE ── */
 .about-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -602,7 +615,7 @@ section { padding: 6rem 0; }
   flex-shrink: 0;
 }
 
-/* â”€â”€ CONTACT PAGE â”€â”€ */
+/* ── CONTACT PAGE ── */
 .contact-grid {
   display: grid;
   grid-template-columns: 1fr 1.5fr;
@@ -645,7 +658,7 @@ section { padding: 6rem 0; }
 }
 .contact-detail__value a:hover { color: var(--color-accent); }
 
-/* â”€â”€ FORM â”€â”€ */
+/* ── FORM ── */
 .contact-form { background: var(--color-white); padding: 3rem; border-radius: var(--radius); box-shadow: var(--shadow); }
 .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
 .form-group { margin-bottom: 1.4rem; }
@@ -691,7 +704,7 @@ section { padding: 6rem 0; }
 }
 .form-success.show { display: block; }
 
-/* â”€â”€ FOOTER â”€â”€ */
+/* ── FOOTER ── */
 footer {
   background: var(--color-dark);
   color: rgba(255,255,255,0.65);
@@ -727,7 +740,7 @@ footer {
 .footer__nav a:hover { color: var(--color-accent); }
 .footer__copy { font-size: 0.78rem; color: rgba(255,255,255,0.3); }
 
-/* â”€â”€ PAGE HERO (inner pages) â”€â”€ */
+/* ── PAGE HERO (inner pages) ── */
 .page-hero {
   background: var(--color-dark);
   padding: 10rem 0 5rem;
@@ -758,7 +771,7 @@ footer {
   font-size: 1rem;
 }
 
-/* â”€â”€ SCROLL ANIMATIONS â”€â”€ */
+/* ── SCROLL ANIMATIONS ── */
 .reveal {
   opacity: 0;
   transform: translateY(28px);
@@ -769,7 +782,7 @@ footer {
   transform: translateY(0);
 }
 
-/* â”€â”€ RESPONSIVE â”€â”€ */
+/* ── RESPONSIVE ── */
 @media (max-width: 900px) {
   .hero__inner        { grid-template-columns: 1fr; }
   .hero::before       { display: none; }
