@@ -210,7 +210,7 @@ const SITE = {
   contact_page: {
     title:    "Let's Work Together",
     subtitle: "I am available for freelance projects, collaborations, and design consultations. Reach out to discuss your project.",
-    form_endpoint: "https://formspree.io/f/YOUR_FORM_ID",
+    form_endpoint: "https://formspree.io/f/xaqvyzed",
   },
 
 };
