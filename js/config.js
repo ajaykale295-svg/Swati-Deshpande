@@ -201,7 +201,7 @@ const SITE = {
       category:    "Commercial",
       description: "Interior design for a logistics and operations company's commercial office. The layout supports high-footfall workflows with dedicated client reception, open operational floor, private management cabins, and a conference zone. Durable materials, efficient lighting, and a professional colour scheme project brand confidence and support day-to-day operational efficiency.",
       folder:      "logistics-office",
-      images:      ["1.png","2.jpg","3.jpg","4.jpg","5.jpg","6.jpg","7.jpg","8.jpg","9.jpg","10.jpg","11.jpg","12.jpg","13.jpg","14.jpeg","15.jpeg","16.jpeg","17.jpeg","18.jpeg","19.jpeg"],
+      images:      ["1.PNG","2.jpg","3.jpg","4.jpg","5.jpg","6.jpg","7.jpg","8.jpg","9.jpg","10.jpg","11.jpg","12.jpg","13.jpg","14.jpeg","15.jpeg","16.jpeg","17.jpeg","18.jpeg","19.jpeg"],
       tags:        ["Logistics","Interiors"],
     },
   ],
