@@ -7,114 +7,26 @@
   <meta name="description" content="Browse Swati Deshpande's portfolio of residential, commercial, and architectural design projects in Pune and across India.">
   <link rel="stylesheet" href="css/style.css">
   <style>
-
-    /* ── PROJECT GRID ───────────────────────────────────── */
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
-      gap: 1.8rem;
-    }
-    .project-card {
-      background: var(--color-white);
-      border-radius: var(--radius);
-      overflow: hidden;
-      box-shadow: var(--shadow);
-      transition: transform 0.35s ease, box-shadow 0.35s ease;
-      cursor: pointer;
-    }
-    .project-card:hover {
-      transform: translateY(-6px);
-      box-shadow: var(--shadow-lg);
-    }
-    .project-card__img-wrap {
-      overflow: hidden;
-      position: relative;
-    }
+    /* ── PROJECT CARD EXTRAS ── */
+    .project-card { cursor: pointer; }
     .project-card__img {
-      width: 100%; height: 240px;
-      object-fit: cover;
-      transition: transform 0.5s ease;
-      display: block;
+      width: 100%; height: 240px; object-fit: cover;
+      transition: transform 0.5s ease; display: block;
     }
     .project-card:hover .project-card__img { transform: scale(1.04); }
-    .project-card__img-placeholder {
-      width: 100%; height: 240px;
-      background: linear-gradient(135deg, var(--color-bg-alt) 0%, var(--color-border) 100%);
-      display: flex; align-items: center; justify-content: center;
-      font-family: var(--font-heading); font-size: 2rem;
-      color: var(--color-accent); letter-spacing: .12em; opacity: 0.5;
-    }
-    .project-card__category {
-      position: absolute; top: 1rem; left: 1rem;
-      background: rgba(250,248,245,0.95);
-      padding: .25rem .8rem;
-      font-size: .68rem; font-weight: 500; letter-spacing: .14em;
-      text-transform: uppercase; color: var(--color-accent); border-radius: 2px;
-    }
-    .project-card__count {
-      position: absolute; top: 1rem; right: 1rem;
-      background: rgba(26,23,20,0.72);
-      padding: .25rem .7rem;
-      font-size: .68rem; color: #fff; border-radius: 2px; letter-spacing: .06em;
-    }
-    .project-card__body { padding: 1.5rem; }
-    .project-card__title {
-      font-family: var(--font-heading); font-size: 1.2rem;
-      font-weight: 500; margin-bottom: .55rem; color: var(--color-dark);
-    }
-    .project-card__desc {
-      font-size: .88rem; color: var(--color-text-mute);
-      line-height: 1.65; margin-bottom: 1rem;
-      display: -webkit-box; -webkit-line-clamp: 3;
-      -webkit-box-orient: vertical; overflow: hidden;
-    }
-    .project-card__tags { display: flex; gap: .4rem; flex-wrap: wrap; margin-bottom: 1rem; }
-    .tag {
-      font-size: .7rem; padding: .2rem .6rem;
-      background: var(--color-bg-alt); color: var(--color-text-mute);
-      border-radius: 2px; letter-spacing: .06em;
-    }
     .project-card__cta {
       display: inline-flex; align-items: center; gap: .4rem;
       font-size: .72rem; font-weight: 500; letter-spacing: .12em;
       text-transform: uppercase; color: var(--color-accent);
     }
-    .project-card__cta::after {
-      content: '→';
-      transition: transform .2s ease;
-    }
-    .project-card:hover .project-card__cta::after { transform: translateX(4px); }
+    .project-card:hover .project-card__cta { text-decoration: underline; }
 
-    /* ── FILTER BAR ─────────────────────────────────────── */
-    .filter-bar {
-      display: flex; gap: .6rem; flex-wrap: wrap;
-      justify-content: center; margin-bottom: 3rem;
-    }
-    .filter-btn {
-      padding: .5rem 1.4rem; font-size: .75rem; font-weight: 400;
-      letter-spacing: .14em; text-transform: uppercase;
-      border: 1px solid var(--color-border); background: transparent;
-      color: var(--color-text-mute); cursor: pointer;
-      transition: all var(--transition); border-radius: 2px;
-    }
-    .filter-btn:hover, .filter-btn.active {
-      background: var(--color-dark);
-      border-color: var(--color-dark);
-      color: var(--color-white);
-    }
-
-    /* ── LIGHTBOX ───────────────────────────────────────── */
+    /* ── LIGHTBOX ── */
     #lb-overlay {
-      display: none;
-      position: fixed;
-      inset: 0;
-      z-index: 9999;
-      background: rgba(10,8,6,0.96);
-      flex-direction: column;
+      display: none; position: fixed; inset: 0; z-index: 9999;
+      background: rgba(10,8,6,0.96); flex-direction: column;
     }
-    #lb-overlay.lb-open {
-      display: flex;
-    }
+    #lb-overlay.lb-open { display: flex; }
 
     .lb-header {
       display: flex; align-items: center; justify-content: space-between;
@@ -125,18 +37,15 @@
       font-family: var(--font-heading); font-size: 1.35rem;
       font-weight: 400; font-style: italic; color: #fff; margin: 0 0 .15rem;
     }
-    .lb-counter {
-      font-size: .75rem; color: rgba(255,255,255,.4);
-      letter-spacing: .1em; margin: 0;
-    }
+    .lb-counter { font-size: .75rem; color: rgba(255,255,255,.4); letter-spacing: .1em; margin: 0; }
     .lb-close-btn {
-      width: 42px; height: 42px; border-radius: 50%;
-      background: rgba(255,255,255,.1); border: none;
+      width: 44px; height: 44px; border-radius: 50%;
+      background: rgba(255,255,255,.12); border: none;
       cursor: pointer; color: #fff; font-size: 1.3rem;
       display: flex; align-items: center; justify-content: center;
       transition: background .2s; flex-shrink: 0;
     }
-    .lb-close-btn:hover { background: rgba(255,255,255,.2); }
+    .lb-close-btn:hover { background: rgba(255,255,255,.25); }
 
     .lb-stage {
       flex: 1; display: flex; align-items: center; justify-content: center;
@@ -147,77 +56,65 @@
       display: flex; align-items: center; justify-content: center;
     }
     .lb-img-box img {
-      max-width: 100%; max-height: 72vh;
-      object-fit: contain; border-radius: 3px;
+      max-width: 100%; max-height: 72vh; object-fit: contain; border-radius: 3px;
     }
     .lb-img-fallback {
-      width: 640px; max-width: 80vw;
-      height: 420px; max-height: 60vh;
+      width: 640px; max-width: 80vw; height: 420px; max-height: 60vh;
       background: linear-gradient(135deg, #2a2520 0%, #1a1714 100%);
-      border-radius: 4px;
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center; gap: .8rem;
+      border-radius: 4px; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 1rem;
     }
-    .lb-img-fallback span:first-child {
-      font-family: var(--font-heading); font-size: 4rem;
-      color: var(--color-accent); opacity: .25; line-height: 1;
+    .lb-img-fallback .lb-sd {
+      font-family: var(--font-heading); font-size: 5rem;
+      color: var(--color-accent); opacity: .2; line-height: 1;
     }
-    .lb-img-fallback span:last-child {
+    .lb-img-fallback .lb-hint {
       font-size: .78rem; letter-spacing: .14em; text-transform: uppercase;
-      color: rgba(255,255,255,.25); text-align: center; line-height: 1.7;
+      color: rgba(255,255,255,.25); text-align: center; line-height: 1.8;
     }
 
     .lb-arrow {
       position: absolute; top: 50%; transform: translateY(-50%);
-      width: 48px; height: 48px; border-radius: 50%;
+      width: 50px; height: 50px; border-radius: 50%;
       background: rgba(255,255,255,.1); border: none;
-      color: #fff; font-size: 1.2rem; cursor: pointer;
+      color: #fff; font-size: 1.3rem; cursor: pointer;
       display: flex; align-items: center; justify-content: center;
       transition: background .2s; z-index: 2;
     }
     .lb-arrow:hover { background: rgba(255,255,255,.22); }
-    .lb-arrow:disabled { opacity: .2; pointer-events: none; }
-    .lb-arrow-prev { left: 1rem; }
-    .lb-arrow-next { right: 1rem; }
+    .lb-arrow:disabled { opacity: .18; pointer-events: none; }
+    #lb-prev { left: 1rem; }
+    #lb-next { right: 1rem; }
 
     .lb-thumbs {
       display: flex; gap: .5rem; padding: .9rem 1.5rem;
       overflow-x: auto; flex-shrink: 0;
       border-top: 1px solid rgba(255,255,255,.08);
-      scrollbar-width: thin;
-      scrollbar-color: rgba(255,255,255,.2) transparent;
+      scrollbar-width: thin; scrollbar-color: rgba(255,255,255,.2) transparent;
     }
-    .lb-thumb-item {
-      width: 64px; height: 48px; flex-shrink: 0;
-      object-fit: cover; border-radius: 2px; cursor: pointer;
-      opacity: .45; border: 1.5px solid transparent;
-      transition: opacity .2s, border-color .2s;
+    .lb-thumb {
+      width: 68px; height: 50px; flex-shrink: 0; object-fit: cover;
+      border-radius: 2px; cursor: pointer; opacity: .45;
+      border: 2px solid transparent; transition: opacity .2s, border-color .2s;
     }
-    .lb-thumb-item:hover { opacity: .75; }
-    .lb-thumb-item.lb-thumb-active { opacity: 1; border-color: var(--color-accent); }
-    .lb-thumb-placeholder {
-      width: 64px; height: 48px; flex-shrink: 0;
-      background: #2a2520; border-radius: 2px; cursor: pointer;
-      opacity: .45; border: 1.5px solid transparent;
+    .lb-thumb:hover { opacity: .78; }
+    .lb-thumb.active { opacity: 1; border-color: var(--color-accent); }
+    .lb-thumb-ph {
+      width: 68px; height: 50px; flex-shrink: 0; background: #2a2520;
+      border-radius: 2px; cursor: pointer; opacity: .45;
+      border: 2px solid transparent; transition: opacity .2s, border-color .2s;
       display: flex; align-items: center; justify-content: center;
-      font-size: .55rem; color: rgba(255,255,255,.3);
-      letter-spacing: .06em; text-transform: uppercase;
-      transition: opacity .2s, border-color .2s;
+      font-size: .6rem; color: rgba(255,255,255,.3); letter-spacing: .06em;
     }
-    .lb-thumb-placeholder:hover { opacity: .75; }
-    .lb-thumb-placeholder.lb-thumb-active { opacity: 1; border-color: var(--color-accent); }
+    .lb-thumb-ph:hover { opacity: .78; }
+    .lb-thumb-ph.active { opacity: 1; border-color: var(--color-accent); }
 
-    .lb-desc-bar {
-      padding: .5rem 1.5rem .9rem; flex-shrink: 0;
-    }
-    .lb-desc-bar p {
-      font-size: .87rem; color: rgba(255,255,255,.45);
-      line-height: 1.6; margin: 0;
-    }
+    .lb-desc-bar { padding: .5rem 1.5rem .9rem; flex-shrink: 0; }
+    .lb-desc-bar p { font-size: .87rem; color: rgba(255,255,255,.4); line-height: 1.6; margin: 0; }
 
     @media (max-width: 700px) {
-      .lb-arrow-prev { left: .3rem; }
-      .lb-arrow-next { right: .3rem; }
+      #lb-prev { left: .3rem; }
+      #lb-next { right: .3rem; }
       .lb-title { font-size: 1rem; }
     }
   </style>
@@ -257,226 +154,129 @@
     </div>
   </section>
 
-  <!-- ── LIGHTBOX MARKUP ── -->
-  <div id="lb-overlay" role="dialog" aria-modal="true" aria-label="Project image gallery">
+  <!-- LIGHTBOX HTML -->
+  <div id="lb-overlay" role="dialog" aria-modal="true" aria-label="Project gallery">
     <div class="lb-header">
       <div>
-        <p class="lb-title"  id="lb-title">Project</p>
+        <p class="lb-title"   id="lb-title">Project</p>
         <p class="lb-counter" id="lb-counter">1 of 1</p>
       </div>
-      <button class="lb-close-btn" id="lb-close" aria-label="Close">&#10005;</button>
+      <button class="lb-close-btn" id="lb-close" aria-label="Close gallery">&#10005;</button>
     </div>
     <div class="lb-stage">
-      <button class="lb-arrow lb-arrow-prev" id="lb-prev" aria-label="Previous">&#8592;</button>
+      <button class="lb-arrow" id="lb-prev" aria-label="Previous image">&#8592;</button>
       <div class="lb-img-box" id="lb-img-box"></div>
-      <button class="lb-arrow lb-arrow-next" id="lb-next" aria-label="Next">&#8594;</button>
+      <button class="lb-arrow" id="lb-next" aria-label="Next image">&#8594;</button>
     </div>
     <div class="lb-thumbs" id="lb-thumbs"></div>
-    <div class="lb-desc-bar">
-      <p id="lb-desc"></p>
-    </div>
+    <div class="lb-desc-bar"><p id="lb-desc"></p></div>
   </div>
 
   <footer id="site-footer"></footer>
   <div class="float-social" id="float-social"></div>
 
-  <!-- load config first, then main.js for nav/footer, then projects logic -->
   <script src="js/config.js"></script>
   <script src="js/main.js"></script>
   <script>
+    /* ── LIGHTBOX ─────────────────────────────────────────────────
+       Defined here as plain globals so projectCard() in main.js
+       can call openLightbox(idx) via onclick attributes.
+    ──────────────────────────────────────────────────────────── */
 
-    /* ═══════════════════════════════════════════════════════════
-       PROJECTS PAGE — grid + filter + lightbox
-       All functions are on window scope (no IIFE) so onclick=""
-       attributes in dynamically-created HTML can reach them.
-    ═══════════════════════════════════════════════════════════ */
+    var _lb = { project: null, idx: 0 };
 
-    /* ── 1. LIGHTBOX STATE ─────────────────────────────────── */
-    var LB = {
-      project : null,
-      idx     : 0
-    };
-
-    /* ── 2. OPEN LIGHTBOX ──────────────────────────────────── */
-    function openLightbox(projectIdx) {
-      LB.project = SITE.projects[projectIdx];
-      LB.idx     = 0;
-
-      document.getElementById('lb-title').textContent = LB.project.title;
-      document.getElementById('lb-desc').textContent  = LB.project.description;
-
-      lbShowImage();
-      lbRenderThumbs();
-
+    function openLightbox(idx) {
+      _lb.project = SITE.projects[idx];
+      _lb.idx     = 0;
+      document.getElementById('lb-title').textContent = _lb.project.title;
+      document.getElementById('lb-desc').textContent  = _lb.project.description;
+      _lbShowImage();
+      _lbBuildThumbs();
       document.getElementById('lb-overlay').classList.add('lb-open');
       document.body.style.overflow = 'hidden';
     }
 
-    /* ── 3. SHOW CURRENT IMAGE ─────────────────────────────── */
-    function lbShowImage() {
-      var p     = LB.project;
+    function _lbShowImage() {
+      var p     = _lb.project;
       var total = p.images.length;
-      var src   = 'images/projects/' + p.folder + '/' + p.images[LB.idx];
+      var src   = 'images/projects/' + p.folder + '/' + p.images[_lb.idx];
 
       document.getElementById('lb-counter').textContent =
-        'Image ' + (LB.idx + 1) + ' of ' + total;
+        'Image ' + (_lb.idx + 1) + ' of ' + total;
+      document.getElementById('lb-prev').disabled = (_lb.idx === 0);
+      document.getElementById('lb-next').disabled = (_lb.idx === total - 1);
 
-      document.getElementById('lb-prev').disabled = (LB.idx === 0);
-      document.getElementById('lb-next').disabled = (LB.idx === total - 1);
-
-      /* Build image element with fallback */
       var box = document.getElementById('lb-img-box');
-      box.innerHTML = '';
-
-      var img = document.createElement('img');
-      img.alt = p.title + ' – image ' + (LB.idx + 1);
+      var img = new Image();
+      img.alt = p.title;
       img.src = src;
+      img.onload = function() {
+        box.innerHTML = '';
+        box.appendChild(img);
+      };
       img.onerror = function() {
         box.innerHTML =
           '<div class="lb-img-fallback">' +
-            '<span>SD</span>' +
-            '<span>Place your images in<br>images/projects/' + p.folder + '/</span>' +
+            '<div class="lb-sd">SD</div>' +
+            '<div class="lb-hint">Add images to<br>images/projects/' + p.folder + '/</div>' +
           '</div>';
       };
+      // Show immediately (onload fires if cached)
+      box.innerHTML = '';
       box.appendChild(img);
 
-      /* Sync thumbnail highlights */
-      var thumbs = document.querySelectorAll('#lb-thumbs .lb-thumb-item, #lb-thumbs .lb-thumb-placeholder');
-      thumbs.forEach(function(el, i) {
-        el.classList.toggle('lb-thumb-active', i === LB.idx);
-      });
+      // Sync thumb highlights
+      var all = document.querySelectorAll('#lb-thumbs .lb-thumb, #lb-thumbs .lb-thumb-ph');
+      all.forEach(function(el, i) { el.classList.toggle('active', i === _lb.idx); });
     }
 
-    /* ── 4. RENDER THUMBNAILS ──────────────────────────────── */
-    function lbRenderThumbs() {
-      var p = LB.project;
+    function _lbBuildThumbs() {
+      var p = _lb.project;
       var container = document.getElementById('lb-thumbs');
       container.innerHTML = '';
-
-      p.images.forEach(function(imgFile, i) {
-        var src = 'images/projects/' + p.folder + '/' + imgFile;
-
-        var thumb = document.createElement('img');
-        thumb.className = 'lb-thumb-item' + (i === 0 ? ' lb-thumb-active' : '');
-        thumb.src   = src;
-        thumb.alt   = 'Thumbnail ' + (i + 1);
-        thumb.loading = 'lazy';
-        thumb.setAttribute('data-idx', i);
-        thumb.onclick = function() { lbJumpTo(parseInt(this.getAttribute('data-idx'))); };
-        thumb.onerror = function() {
+      p.images.forEach(function(file, i) {
+        var src = 'images/projects/' + p.folder + '/' + file;
+        var el  = new Image();
+        el.className = 'lb-thumb' + (i === 0 ? ' active' : '');
+        el.src     = src;
+        el.alt     = 'Image ' + (i + 1);
+        el.loading = 'lazy';
+        el.dataset.i = i;
+        el.onclick = function() { _lb.idx = +this.dataset.i; _lbShowImage(); };
+        el.onerror = function() {
           var ph = document.createElement('div');
-          ph.className = 'lb-thumb-placeholder' + (i === 0 ? ' lb-thumb-active' : '');
+          ph.className = 'lb-thumb-ph' + (i === 0 ? ' active' : '');
           ph.textContent = i + 1;
-          ph.setAttribute('data-idx', i);
-          ph.onclick = function() { lbJumpTo(parseInt(this.getAttribute('data-idx'))); };
-          this.parentNode.replaceChild(ph, this);
+          ph.dataset.i   = i;
+          ph.onclick = function() { _lb.idx = +this.dataset.i; _lbShowImage(); };
+          if (this.parentNode) this.parentNode.replaceChild(ph, this);
         };
-        container.appendChild(thumb);
+        container.appendChild(el);
       });
     }
 
-    /* ── 5. JUMP TO SPECIFIC IMAGE ─────────────────────────── */
-    function lbJumpTo(idx) {
-      LB.idx = idx;
-      lbShowImage();
-      /* Scroll thumbnail into view */
-      var thumbs = document.querySelectorAll('#lb-thumbs .lb-thumb-item, #lb-thumbs .lb-thumb-placeholder');
-      if (thumbs[idx]) {
-        thumbs[idx].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-      }
-    }
-
-    /* ── 6. CLOSE LIGHTBOX ─────────────────────────────────── */
     function closeLightbox() {
       document.getElementById('lb-overlay').classList.remove('lb-open');
       document.body.style.overflow = '';
-      LB.project = null;
     }
 
-    /* ── 7. WIRE UP LIGHTBOX CONTROLS ─────────────────────── */
     document.getElementById('lb-close').onclick = closeLightbox;
-
     document.getElementById('lb-prev').onclick = function() {
-      if (LB.idx > 0) { LB.idx--; lbShowImage(); }
+      if (_lb.idx > 0) { _lb.idx--; _lbShowImage(); }
     };
-
     document.getElementById('lb-next').onclick = function() {
-      if (LB.project && LB.idx < LB.project.images.length - 1) {
-        LB.idx++;
-        lbShowImage();
-      }
+      if (_lb.project && _lb.idx < _lb.project.images.length - 1) { _lb.idx++; _lbShowImage(); }
     };
-
-    /* Close when clicking backdrop (outside the content) */
     document.getElementById('lb-overlay').onclick = function(e) {
       if (e.target === this) closeLightbox();
     };
-
-    /* Keyboard navigation */
     document.addEventListener('keydown', function(e) {
       if (!document.getElementById('lb-overlay').classList.contains('lb-open')) return;
       if (e.key === 'ArrowLeft')  document.getElementById('lb-prev').click();
       if (e.key === 'ArrowRight') document.getElementById('lb-next').click();
       if (e.key === 'Escape')     closeLightbox();
     });
-
-    /* ── 8. RENDER PROJECT CARDS ───────────────────────────── */
-    function renderCards(category) {
-      var list = category === 'All'
-        ? SITE.projects
-        : SITE.projects.filter(function(p) { return p.category === category; });
-
-      var grid = document.getElementById('projects-grid');
-      grid.innerHTML = list.map(function(p) {
-        /* Find this project's index in the master array for the lightbox */
-        var masterIdx = SITE.projects.indexOf(p);
-        var cover     = 'images/projects/' + p.folder + '/' + p.images[0];
-        var count     = p.images.length;
-
-        return '<div class="project-card reveal" onclick="openLightbox(' + masterIdx + ')">' +
-          '<div class="project-card__img-wrap">' +
-            '<img class="project-card__img" src="' + cover + '" alt="' + p.title + '" loading="lazy" ' +
-              'onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'flex\'">' +
-            '<div class="project-card__img-placeholder" style="display:none">SD</div>' +
-            '<span class="project-card__category">' + p.category + '</span>' +
-            (count > 1 ? '<span class="project-card__count">' + count + ' photos</span>' : '') +
-          '</div>' +
-          '<div class="project-card__body">' +
-            '<div class="project-card__title">' + p.title + '</div>' +
-            '<p class="project-card__desc">' + p.description + '</p>' +
-            '<div class="project-card__tags">' +
-              p.tags.map(function(t){ return '<span class="tag">' + t + '</span>'; }).join('') +
-            '</div>' +
-            '<span class="project-card__cta">View Project</span>' +
-          '</div>' +
-        '</div>';
-      }).join('');
-
-      /* Re-run scroll reveal on freshly injected cards */
-      if (typeof initScrollEffects === 'function') initScrollEffects();
-    }
-
-    /* ── 9. FILTER BAR ─────────────────────────────────────── */
-    var CATEGORIES = ['All', 'Residential', 'Architecture', 'Commercial'];
-    var bar = document.getElementById('filter-bar');
-    bar.innerHTML = CATEGORIES.map(function(c, i) {
-      return '<button class="filter-btn' + (i === 0 ? ' active' : '') +
-             '" data-cat="' + c + '">' + c + '</button>';
-    }).join('');
-
-    bar.addEventListener('click', function(e) {
-      var btn = e.target.closest('.filter-btn');
-      if (!btn) return;
-      bar.querySelectorAll('.filter-btn').forEach(function(b) {
-        b.classList.remove('active');
-      });
-      btn.classList.add('active');
-      renderCards(btn.dataset.cat);
-    });
-
-    /* ── 10. INITIAL RENDER ────────────────────────────────── */
-    renderCards('All');
-
   </script>
+
 </body>
 </html>
