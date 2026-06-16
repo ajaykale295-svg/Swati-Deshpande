@@ -133,7 +133,7 @@ const SITE = {
       category:    "Residential",
       description: "A collection of detailed 3D visualisation renders showcasing conceptual residential interior designs. These renders serve as precise pre-execution previews — capturing material finishes, spatial volumes, lighting conditions, and furniture arrangements before a single wall is touched.",
       folder:      "renders",
-      images:      ["1.jpg","2.jpg","3.jpg","4.jpg","5.png","6.png","7.png","8.png","9.jpg","10.jpg","11.png","12.png","13.png","14.png","15.png","16.jpg","17.jpg","18.png","19.png","20.png"],
+      images:      ["1.JPG","2.JPG","3.JPG","4.jpg","5.png","6.png","7.png","8.png","9.jpg","10.jpg","11.png","12.png","13.png","14.png","15.png","16.jpg","17.jpg","18.png","19.png","20.png"],
       tags:        ["3D Renders", "Visualisation", "Concept Design"],
     },
     {
@@ -159,7 +159,7 @@ const SITE = {
       category:    "Architecture",
       description: "Architectural design and renders for a Veterinary Polyclinic Hospital in Bijapur. The project encompasses functional layout planning for OPD, examination rooms, surgical suites, and animal wards — designed to meet both clinical efficiency and animal welfare standards while presenting a clean, professional exterior.",
       folder:      "bijapur-veterinary",
-      images:      ["3D Image Bijapur Veterinary Polyclinic 2.jpg","3D Image Bijapur Veterinary Polyclinic.jpg"],
+      images:      ["3D Image Bijapur Veterinary Polyclinic 2.JPG","3D Image Bijapur Veterinary Polyclinic.JPG"],
       tags:        ["Hospital", "Institutional", "Bijapur", "Architecture"],
     },
     {
@@ -167,7 +167,7 @@ const SITE = {
       category:    "Architecture",
       description: "Exterior architecture and façade design for private residential bungalows. The work encompasses massing, material selection, fenestration design, landscape integration, and exterior lighting — creating homes that are visually distinctive, contextually sensitive, and built to stand the test of time.",
       folder:      "bungalow-exteriors",
-      images:      ["1.jpeg","2.jpeg","3.jpeg","4.jpeg","5.jpeg","6.jpeg","7.jpeg","8.jpeg","9.jpeg","10.jpeg"],
+      images:      ["1.jpg","2.jpg","3.jpg","4.jpeg","5.jpeg","6.jpeg","7.jpeg","8.jpeg","9.jpeg","10.jpeg"],
       tags:        ["Exterior", "Bungalow", "Façade", "Architecture"],
     },
     {
@@ -201,8 +201,8 @@ const SITE = {
       category:    "Commercial",
       description: "Interior design for a logistics and operations company's commercial office. The layout supports high-footfall workflows with dedicated client reception, open operational floor, private management cabins, and a conference zone. Durable materials, efficient lighting, and a professional colour scheme project brand confidence and support day-to-day operational efficiency.",
       folder:      "logistics-office",
-      images:      ["placeholder.jpg"],
-      tags:        ["1.png","2.jpg","3.jpg","4.jpg","5.jpg","6.jpg","7.jpg","8.jpg","9.jpg","10.jpg","11.jpg","12.jpg","13.jpg","14.jpeg","15.jpeg","16.jpeg","17.jpeg","18.jpeg","19.jpeg"],
+      images:      ["1.png","2.jpg","3.jpg","4.jpg","5.jpg","6.jpg","7.jpg","8.jpg","9.jpg","10.jpg","11.jpg","12.jpg","13.jpg","14.jpeg","15.jpeg","16.jpeg","17.jpeg","18.jpeg","19.jpeg"],
+      tags:        ["Logistics","Interiors"],
     },
   ],
 
