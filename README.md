@@ -1,7 +1,6 @@
 # Swati Deshpande Designs — Website
 
-A free, elegant website for an interior designer/architect.
-**Hosting: GitHub Pages (free) | Contact form: Formspree (free)**
+Free hosting via GitHub Pages | Contact form via Formspree
 
 ---
 
@@ -10,165 +9,123 @@ A free, elegant website for an interior designer/architect.
 ```
 swati-designs/
 │
-├── index.html          ← Home page
-├── about.html          ← About page
-├── services.html       ← Services page
-├── projects.html       ← Projects page (with filter)
-├── contact.html        ← Contact page with form
+├── index.html
+├── about.html
+├── services.html
+├── projects.html       ← Project grid + lightbox gallery
+├── contact.html
 │
-├── css/
-│   └── style.css       ← All styling + color variables
+├── css/style.css       ← All styling + color variables
 │
 ├── js/
 │   ├── config.js       ← ⭐ ALL EDITABLE CONTENT IS HERE
 │   └── main.js         ← Rendering logic (don't edit)
 │
-└── images/             ← Put all your photos here
-    ├── hero.jpg
-    ├── swati-portrait.jpg
-    ├── project-1.jpg
-    ├── project-2.jpg
-    └── ...
+└── images/
+    ├── hero.jpg                    ← Home page hero photo
+    ├── swati-portrait.jpg          ← About page photo
+    │
+    └── projects/                   ← ⭐ PROJECT IMAGES GO HERE
+        │
+        ├── 4bhk-bungalow-ahmedabad/    ← Residential: 4 BHK Bungalow Ahmedabad
+        ├── chandur-renders-3bhk/       ← Residential: 3 BHK Flat Interior
+        ├── renders/                    ← Residential: Renders
+        ├── surya-emerald-teakwood/     ← Residential: Surya Emerald Teakwood
+        ├── satish-luxury-4bhk/         ← Residential: Luxury 4BHK
+        │
+        ├── bijapur-veterinary/         ← Architecture: Veterinary Polyclinic
+        ├── bungalow-exteriors/         ← Architecture: Bungalow Exteriors
+        ├── mdpu-school-college/        ← Architecture: School & PU College
+        │
+        ├── cloth-shop/                 ← Commercial: Cloth Shop
+        ├── japanese-office/            ← Commercial: Japanese Office
+        └── logistics-office/           ← Commercial: Logistics Office
 ```
 
 ---
 
-## ✏️ HOW TO EDIT CONTENT
+## 🖼️ HOW TO ADD IMAGES TO A PROJECT
 
-**Open `js/config.js` — this is the only file you need to edit for most changes.**
-
-### Change name, phone, email, social handles
-```js
-contact: {
-  phone:     "8320941691",
-  email:     "swatideshpande264@gmail.com",
-  whatsapp:  "918320941691",   // 91 = India country code
-  instagram: "swatideshpande264",
-},
+### Step 1 — Drop your images into the right folder
+Each project has its own folder under `images/projects/`. For example, for the
+4 BHK Bungalow project, put your photos here:
+```
+images/projects/4bhk-bungalow-ahmedabad/living-room.jpg
+images/projects/4bhk-bungalow-ahmedabad/kitchen.jpg
+images/projects/4bhk-bungalow-ahmedabad/master-bedroom.jpg
 ```
 
-### Add a new project
-Find the `projects:` array in `config.js` and add a new block:
+### Step 2 — Update the images list in config.js
+Open `js/config.js`, find the project, and add your filenames to the `images` array:
 ```js
 {
-  title: "My New Project – Pune",
-  category: "Residential",       // Residential | Commercial | Architecture | Renovation
-  description: "Short description of this project.",
-  image: "images/new-project.jpg",  // place this image in the /images/ folder
-  tags: ["Tag1", "Tag2", "Tag3"],
-},
-```
-
-### Add a new service
-Find the `services:` array and add:
-```js
-{
-  icon: "🏠",
-  title: "New Service Name",
-  description: "What this service includes.",
-},
-```
-
-### Change the hero stats (e.g. update years)
-```js
-stats: [
-  { number: "14+", label: "Years Experience" },
+  title:  "4 BHK Residence Bungalow in Ahmedabad",
+  folder: "4bhk-bungalow-ahmedabad",
+  images: ["living-room.jpg", "kitchen.jpg", "master-bedroom.jpg"],
+  // ↑ First image = tile cover. All images open in the gallery lightbox.
   ...
-]
-```
-
-### Change colors (site-wide)
-Open `css/style.css` and edit the top `:root` section:
-```css
-:root {
-  --color-bg:     #FAF8F5;   /* page background */
-  --color-accent: #B8860B;   /* gold highlights — change this! */
-  --color-dark:   #1A1714;   /* dark text / footer */
 }
 ```
 
----
+That's it. The first image in the array becomes the project tile cover.
+All images appear in the lightbox when someone clicks the tile.
 
-## 🖼️ HOW TO ADD IMAGES
-
-1. Name your image files (e.g. `project-living-room.jpg`)
-2. Place them in the `/images/` folder
-3. In `config.js`, set the `image:` path:
-   ```js
-   image: "images/project-living-room.jpg",
-   ```
-4. **Recommended sizes:**
-   - Hero photo: 900×1100px
-   - Portrait (about page): 600×800px
-   - Project photos: 800×600px (landscape)
-5. **Compress your images** at https://squoosh.app before uploading to keep the site fast.
+### Image tips
+- Recommended size: 1200×800px (landscape works best for the gallery)
+- Compress before uploading: https://squoosh.app (target < 300KB per image)
+- Supported formats: JPG, PNG, WebP
 
 ---
 
-## 📬 SETTING UP THE CONTACT FORM (Formspree — Free)
+## ✏️ HOW TO EDIT PROJECT CONTENT
 
-1. Go to https://formspree.io and create a free account
-2. Click **New Form**, name it "Website Contact"
-3. Copy the form ID (looks like `xpzgnqab`)
-4. In `config.js`, update:
-   ```js
-   form_endpoint: "https://formspree.io/f/xpzgnqab",
-   ```
-5. Done! Form submissions will arrive in your email.
+All project content is in `js/config.js` under `projects: [...]`
 
----
+### Add a new project
+1. Create a new folder: `images/projects/my-new-project/`
+2. Copy any project block in config.js, update all fields:
+```js
+{
+  title:       "My New Project Name",
+  category:    "Residential",        // Residential | Architecture | Commercial
+  description: "Description here.",
+  folder:      "my-new-project",     // must match your folder name exactly
+  images:      ["photo1.jpg"],
+  tags:        ["Tag1", "Tag2"],
+},
+```
 
-## 🚀 DEPLOYING TO GITHUB PAGES (Free Hosting)
+### Change a project description or tags
+Find the project in config.js and edit the `description` or `tags` fields directly.
 
-### Step 1 — Create a GitHub account
-Go to https://github.com and sign up (free).
-
-### Step 2 — Create a new repository
-- Click the **+** icon → **New repository**
-- Name it: `swati-deshpande-designs` (or anything)
-- Set to **Public**
-- Click **Create repository**
-
-### Step 3 — Upload files
-- Click **uploading an existing file**
-- Drag and drop ALL your website files (keep folder structure)
-- Click **Commit changes**
-
-### Step 4 — Enable GitHub Pages
-- Go to **Settings** → **Pages**
-- Under **Source**, select **Deploy from a branch**
-- Branch: `main`, Folder: `/ (root)`
-- Click **Save**
-
-Your site will be live at:
-`https://yourusername.github.io/swati-deshpande-designs/`
-
-### Step 5 — Connect your custom domain
-1. In GitHub Pages settings, enter your domain in **Custom domain** (e.g. `www.swatideshpandedesigns.com`)
-2. Log into your domain registrar (GoDaddy/Namecheap/BigRock etc.)
-3. Add a **CNAME record**: `www` → `yourusername.github.io`
-4. Add **A records** pointing to GitHub's IPs:
-   ```
-   185.199.108.153
-   185.199.109.153
-   185.199.110.153
-   185.199.111.153
-   ```
-5. Wait 10–30 minutes. Your site will be live at your domain with free HTTPS.
+### Remove a project
+Delete the entire `{ ... }` block for that project in config.js.
 
 ---
 
-## 🆓 Monthly Cost Breakdown
+## 📬 CONTACT FORM SETUP (Formspree — Free)
 
-| Item | Cost |
-|------|------|
-| GitHub Pages hosting | ₹0 |
-| Formspree contact form | ₹0 (up to 50 submissions/month) |
-| Domain (already purchased) | ₹0 |
-| **Total** | **₹0/month** |
+1. Go to https://formspree.io → create free account
+2. New Form → copy the form ID (e.g. `xpzgnqab`)
+3. In config.js update:
+```js
+form_endpoint: "https://formspree.io/f/xpzgnqab",
+```
 
 ---
 
-## 🙋 Need Help?
+## 🚀 DEPLOYING TO GITHUB PAGES
 
-For any issues, feel free to reach out. Changes to content only require editing `config.js`.
+1. Create a GitHub account at github.com
+2. New repository → name it anything → set to Public
+3. Upload all files (keep the folder structure)
+4. Settings → Pages → Source: main branch → Save
+5. Add your custom domain in Pages settings
+
+Connect your GoDaddy domain:
+- Add 4 A records pointing to: 185.199.108.153 / .109 / .110 / .111
+- Add CNAME record: www → yourusername.github.io
+
+---
+
+## 🆓 Monthly Cost: ₹0
