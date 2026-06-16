@@ -116,7 +116,7 @@ const SITE = {
       category:    "Residential",
       description: "A spacious 4 BHK bungalow interior designed for a family in Ahmedabad. The project integrates warm material palettes, custom joinery, and a seamless flow between living, dining, and entertainment zones. Each room balances comfort with elegance, reflecting the family's lifestyle and aspirations.",
       folder:      "4bhk-bungalow-ahmedabad",
-      images:      ["1.jpeg","2.jpeg"],
+      images:      ["1.jpeg","2.jpeg","3.jpeg","4.jpeg","5.jpeg","6.jpeg","7.jpeg","8.jpeg","9.jpeg","10.jpeg","11.jpeg","12.jpeg","13.jpeg","14.jpeg","15.jpeg","16.jpeg"],
       // ↑ Add more: ["placeholder.jpg", "living-room.jpg", "master-bedroom.jpg"]
       tags:        ["4 BHK", "Bungalow", "Ahmedabad", "Residential"],
     },
@@ -125,7 +125,7 @@ const SITE = {
       category:    "Residential",
       description: "Contemporary 3 BHK apartment interior featuring clean lines, space-efficient furniture, and a cohesive colour palette. The design focuses on maximising natural light, optimising storage in each room, and creating a modern yet livable home for an urban family.",
       folder:      "chandur-renders-3bhk",
-      images:      ["placeholder.jpg"],
+      images:      ["1.jpg","2.jpg","3.jpg","4.jpg","5.jpg","6.jpg","7.jpg","8.jpg"],
       tags:        ["3 BHK", "Flat", "Interior Design", "Contemporary"],
     },
     {
@@ -133,7 +133,7 @@ const SITE = {
       category:    "Residential",
       description: "A collection of detailed 3D visualisation renders showcasing conceptual residential interior designs. These renders serve as precise pre-execution previews — capturing material finishes, spatial volumes, lighting conditions, and furniture arrangements before a single wall is touched.",
       folder:      "renders",
-      images:      ["placeholder.jpg"],
+      images:      ["1.jpg","2.jpg","3.jpg","4.jpg","5.png","6.png","7.png","8.png","9.jpg","10.jpg","11.png","12.png","13.png","14.png","15.png","16.jpg","17.jpg","18.png","19.png","20.png"],
       tags:        ["3D Renders", "Visualisation", "Concept Design"],
     },
     {
@@ -141,7 +141,7 @@ const SITE = {
       category:    "Residential",
       description: "Premium 3 BHK flat interiors at Surya Emerald featuring rich teakwood panelling, custom-crafted cabinetry, and high-end material finishes. The design exudes warmth and luxury with bespoke teak furniture, statement lighting, and a curated colour palette of warm browns, off-whites, and gold accents.",
       folder:      "surya-emerald-teakwood",
-      images:      ["placeholder.jpg"],
+      images:      ["1.jpeg","2.jpeg","3.jpeg","4.jpeg","5.jpeg","6.jpeg","7.jpeg","8.jpeg","9.jpeg","10.jpeg","11.jpeg","12.jpeg","13.jpeg","14.jpeg","15.jpeg","16.jpeg"],
       tags:        ["3 BHK", "Teakwood", "Premium", "Surya Emerald"],
     },
     {
@@ -149,7 +149,7 @@ const SITE = {
       category:    "Residential",
       description: "An opulent 4 BHK luxury apartment interior crafted with the finest materials and bespoke detailing. The design language blends contemporary architecture with classic luxury — featuring marble flooring, velvet upholstery, backlit wall panels, and custom crafted wardrobes. Every room is a statement of refined living.",
       folder:      "satish-luxury-4bhk",
-      images:      ["placeholder.jpg"],
+      images:      ["1.jpg","2.jpg","3.jpg","4.jpg","5.jpg","6.jpg","7.jpg","8.jpg"],
       tags:        ["4 BHK", "Luxury", "Premium Interiors", "Bespoke"],
     },
 
@@ -159,7 +159,7 @@ const SITE = {
       category:    "Architecture",
       description: "Architectural design and renders for a Veterinary Polyclinic Hospital in Bijapur. The project encompasses functional layout planning for OPD, examination rooms, surgical suites, and animal wards — designed to meet both clinical efficiency and animal welfare standards while presenting a clean, professional exterior.",
       folder:      "bijapur-veterinary",
-      images:      ["placeholder.jpg"],
+      images:      ["3D Image Bijapur Veterinary Polyclinic 2.jpg","3D Image Bijapur Veterinary Polyclinic.jpg"],
       tags:        ["Hospital", "Institutional", "Bijapur", "Architecture"],
     },
     {
@@ -167,7 +167,7 @@ const SITE = {
       category:    "Architecture",
       description: "Exterior architecture and façade design for private residential bungalows. The work encompasses massing, material selection, fenestration design, landscape integration, and exterior lighting — creating homes that are visually distinctive, contextually sensitive, and built to stand the test of time.",
       folder:      "bungalow-exteriors",
-      images:      ["placeholder.jpg"],
+      images:      ["1.jpeg","2.jpeg","3.jpeg","4.jpeg","5.jpeg","6.jpeg","7.jpeg","8.jpeg","9.jpeg","10.jpeg"],
       tags:        ["Exterior", "Bungalow", "Façade", "Architecture"],
     },
     {
@@ -175,7 +175,7 @@ const SITE = {
       category:    "Architecture",
       description: "Architectural design for a combined Residential School and Pre-University College campus. The project addresses complex multi-use programming — classrooms, dormitories, sports facilities, administrative blocks, and open courtyards — all within a cohesive campus master plan that promotes learning, community, and well-being.",
       folder:      "mdpu-school-college",
-      images:      ["placeholder.jpg"],
+      images:      ["1.jpeg","2.jpeg","3.jpeg","4.jpg","5.jpeg","6.jpg","7.jpg","8.jpeg","9.jpeg","10.jpeg"],
       tags:        ["Institutional", "School", "PU College", "Campus"],
     },
 
@@ -185,7 +185,7 @@ const SITE = {
       category:    "Commercial",
       description: "Retail interior design for a cloth and textile showroom. The layout prioritises an inviting browsing experience with well-organised fabric display racks, warm accent lighting to bring out textile colours, and a clean yet rich aesthetic that communicates quality and craftsmanship to every customer who walks in.",
       folder:      "cloth-shop",
-      images:      ["placeholder.jpg"],
+      images:      ["1.jpeg","2.jpeg","3.jpeg","4.jpeg","5.jpeg","6.jpeg","7.jpeg","8.jpeg","9.jpeg"],
       tags:        ["Retail", "Cloth Shop", "Commercial", "Showroom"],
     },
     {
@@ -193,7 +193,7 @@ const SITE = {
       category:    "Commercial",
       description: "A commercial office interior inspired by Japanese design philosophy — minimalist, calm, and deeply functional. The design incorporates natural materials like bamboo, light wood, and stone textures, with clean spatial planning that encourages focused work. Shoji-inspired partition screens, controlled natural light, and a neutral palette create a serene yet professional environment.",
       folder:      "japanese-office",
-      images:      ["placeholder.jpg"],
+      images:      ["1.jpeg","2.jpeg","3.jpeg","4.jpeg","5.jpeg","6.jpeg","7.jpeg","8.jpeg","9.jpeg"],
       tags:        ["Japanese", "Office", "Minimalist", "Commercial"],
     },
     {
@@ -202,7 +202,7 @@ const SITE = {
       description: "Interior design for a logistics and operations company's commercial office. The layout supports high-footfall workflows with dedicated client reception, open operational floor, private management cabins, and a conference zone. Durable materials, efficient lighting, and a professional colour scheme project brand confidence and support day-to-day operational efficiency.",
       folder:      "logistics-office",
       images:      ["placeholder.jpg"],
-      tags:        ["Logistics", "Office", "Commercial", "Operations"],
+      tags:        ["1.png","2.jpg","3.jpg","4.jpg","5.jpg","6.jpg","7.jpg","8.jpg","9.jpg","10.jpg","11.jpg","12.jpg","13.jpg","14.jpeg","15.jpeg","16.jpeg","17.jpeg","18.jpeg","19.jpeg"],
     },
   ],
 
