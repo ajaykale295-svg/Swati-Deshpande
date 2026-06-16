@@ -7,7 +7,8 @@
   <meta name="description" content="Browse Swati Deshpande's portfolio of residential, commercial, and architectural design projects in Pune and across India.">
   <link rel="stylesheet" href="css/style.css">
   <style>
-    /* ── PROJECT GRID ── */
+
+    /* ── PROJECT GRID ───────────────────────────────────── */
     .projects-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
@@ -21,8 +22,14 @@
       transition: transform 0.35s ease, box-shadow 0.35s ease;
       cursor: pointer;
     }
-    .project-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
-    .project-card__img-wrap { overflow: hidden; position: relative; }
+    .project-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lg);
+    }
+    .project-card__img-wrap {
+      overflow: hidden;
+      position: relative;
+    }
     .project-card__img {
       width: 100%; height: 240px;
       object-fit: cover;
@@ -46,10 +53,9 @@
     }
     .project-card__count {
       position: absolute; top: 1rem; right: 1rem;
-      background: rgba(26,23,20,0.75);
+      background: rgba(26,23,20,0.72);
       padding: .25rem .7rem;
-      font-size: .68rem; font-weight: 400; letter-spacing: .06em;
-      color: #fff; border-radius: 2px;
+      font-size: .68rem; color: #fff; border-radius: 2px; letter-spacing: .06em;
     }
     .project-card__body { padding: 1.5rem; }
     .project-card__title {
@@ -73,117 +79,17 @@
       font-size: .72rem; font-weight: 500; letter-spacing: .12em;
       text-transform: uppercase; color: var(--color-accent);
     }
-    .project-card__cta::after { content: '→'; transition: transform .2s ease; }
+    .project-card__cta::after {
+      content: '→';
+      transition: transform .2s ease;
+    }
     .project-card:hover .project-card__cta::after { transform: translateX(4px); }
 
-    /* ── LIGHTBOX OVERLAY ── */
-    .lb-overlay {
-      display: none; position: fixed;
-      inset: 0; z-index: 9999;
-      background: rgba(10,8,6,0.96);
-      flex-direction: column;
+    /* ── FILTER BAR ─────────────────────────────────────── */
+    .filter-bar {
+      display: flex; gap: .6rem; flex-wrap: wrap;
+      justify-content: center; margin-bottom: 3rem;
     }
-    .lb-overlay.open { display: flex; }
-
-    .lb-header {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 1rem 1.5rem;
-      border-bottom: 1px solid rgba(255,255,255,0.1);
-      flex-shrink: 0;
-    }
-    .lb-header-left { }
-    .lb-project-title {
-      font-family: var(--font-heading); font-size: 1.4rem;
-      font-weight: 400; font-style: italic; color: #fff;
-      margin: 0 0 .15rem;
-    }
-    .lb-counter { font-size: .75rem; color: rgba(255,255,255,.45); letter-spacing: .1em; }
-    .lb-close {
-      width: 42px; height: 42px; border-radius: 50%;
-      background: rgba(255,255,255,.08);
-      border: none; cursor: pointer; color: #fff; font-size: 1.2rem;
-      display: flex; align-items: center; justify-content: center;
-      transition: background .2s;
-    }
-    .lb-close:hover { background: rgba(255,255,255,.18); }
-
-    .lb-main {
-      flex: 1; display: flex; align-items: center; justify-content: center;
-      position: relative; overflow: hidden; min-height: 0;
-    }
-    .lb-img-wrap {
-      max-width: 90vw; max-height: 75vh;
-      display: flex; align-items: center; justify-content: center;
-    }
-    .lb-img-wrap img {
-      max-width: 100%; max-height: 75vh;
-      object-fit: contain; border-radius: 3px;
-    }
-    /* Placeholder for lightbox when no real image loads */
-    .lb-img-placeholder {
-      width: 700px; max-width: 85vw; height: 480px; max-height: 65vh;
-      background: linear-gradient(135deg, #2a2520 0%, #1a1714 100%);
-      border-radius: 4px;
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-      color: var(--color-accent);
-    }
-    .lb-img-placeholder .plc-icon {
-      font-family: var(--font-heading); font-size: 5rem;
-      font-weight: 300; opacity: .3; margin-bottom: 1rem;
-    }
-    .lb-img-placeholder .plc-text {
-      font-size: .8rem; letter-spacing: .14em; text-transform: uppercase;
-      color: rgba(255,255,255,.3);
-    }
-
-    .lb-nav {
-      position: absolute; top: 50%; transform: translateY(-50%);
-      width: 48px; height: 48px; border-radius: 50%;
-      background: rgba(255,255,255,.1); border: none;
-      color: #fff; font-size: 1.1rem; cursor: pointer;
-      display: flex; align-items: center; justify-content: center;
-      transition: background .2s; z-index: 2;
-    }
-    .lb-nav:hover { background: rgba(255,255,255,.22); }
-    .lb-nav.lb-prev { left: 1rem; }
-    .lb-nav.lb-next { right: 1rem; }
-    .lb-nav:disabled { opacity: .25; cursor: default; }
-
-    .lb-thumbnails {
-      display: flex; gap: .5rem;
-      padding: 1rem 1.5rem;
-      overflow-x: auto; flex-shrink: 0;
-      border-top: 1px solid rgba(255,255,255,.08);
-      scrollbar-width: thin; scrollbar-color: rgba(255,255,255,.2) transparent;
-    }
-    .lb-thumb {
-      width: 64px; height: 48px; flex-shrink: 0;
-      object-fit: cover; border-radius: 2px;
-      opacity: .5; cursor: pointer;
-      transition: opacity .2s; border: 1.5px solid transparent;
-    }
-    .lb-thumb:hover { opacity: .8; }
-    .lb-thumb.active { opacity: 1; border-color: var(--color-accent); }
-    .lb-thumb-placeholder {
-      width: 64px; height: 48px; flex-shrink: 0;
-      background: #2a2520; border-radius: 2px;
-      opacity: .5; cursor: pointer;
-      display: flex; align-items: center; justify-content: center;
-      font-size: .55rem; color: rgba(255,255,255,.3);
-      letter-spacing: .06em; text-transform: uppercase;
-      border: 1.5px solid transparent;
-    }
-    .lb-thumb-placeholder.active { opacity: 1; border-color: var(--color-accent); }
-
-    .lb-info {
-      padding: .6rem 1.5rem 1rem;
-      flex-shrink: 0; border-top: 1px solid rgba(255,255,255,.08);
-    }
-    .lb-desc { font-size: .88rem; color: rgba(255,255,255,.55); line-height: 1.6; margin: 0; }
-
-    /* Filter bar */
-    .filter-bar { display: flex; gap: .6rem; flex-wrap: wrap; justify-content: center; margin-bottom: 3rem; }
     .filter-btn {
       padding: .5rem 1.4rem; font-size: .75rem; font-weight: 400;
       letter-spacing: .14em; text-transform: uppercase;
@@ -192,13 +98,127 @@
       transition: all var(--transition); border-radius: 2px;
     }
     .filter-btn:hover, .filter-btn.active {
-      background: var(--color-dark); border-color: var(--color-dark); color: var(--color-white);
+      background: var(--color-dark);
+      border-color: var(--color-dark);
+      color: var(--color-white);
+    }
+
+    /* ── LIGHTBOX ───────────────────────────────────────── */
+    #lb-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: rgba(10,8,6,0.96);
+      flex-direction: column;
+    }
+    #lb-overlay.lb-open {
+      display: flex;
+    }
+
+    .lb-header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1rem 1.5rem; flex-shrink: 0;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    .lb-title {
+      font-family: var(--font-heading); font-size: 1.35rem;
+      font-weight: 400; font-style: italic; color: #fff; margin: 0 0 .15rem;
+    }
+    .lb-counter {
+      font-size: .75rem; color: rgba(255,255,255,.4);
+      letter-spacing: .1em; margin: 0;
+    }
+    .lb-close-btn {
+      width: 42px; height: 42px; border-radius: 50%;
+      background: rgba(255,255,255,.1); border: none;
+      cursor: pointer; color: #fff; font-size: 1.3rem;
+      display: flex; align-items: center; justify-content: center;
+      transition: background .2s; flex-shrink: 0;
+    }
+    .lb-close-btn:hover { background: rgba(255,255,255,.2); }
+
+    .lb-stage {
+      flex: 1; display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden; min-height: 0;
+    }
+    .lb-img-box {
+      max-width: 90vw; max-height: 72vh;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .lb-img-box img {
+      max-width: 100%; max-height: 72vh;
+      object-fit: contain; border-radius: 3px;
+    }
+    .lb-img-fallback {
+      width: 640px; max-width: 80vw;
+      height: 420px; max-height: 60vh;
+      background: linear-gradient(135deg, #2a2520 0%, #1a1714 100%);
+      border-radius: 4px;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: .8rem;
+    }
+    .lb-img-fallback span:first-child {
+      font-family: var(--font-heading); font-size: 4rem;
+      color: var(--color-accent); opacity: .25; line-height: 1;
+    }
+    .lb-img-fallback span:last-child {
+      font-size: .78rem; letter-spacing: .14em; text-transform: uppercase;
+      color: rgba(255,255,255,.25); text-align: center; line-height: 1.7;
+    }
+
+    .lb-arrow {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      width: 48px; height: 48px; border-radius: 50%;
+      background: rgba(255,255,255,.1); border: none;
+      color: #fff; font-size: 1.2rem; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: background .2s; z-index: 2;
+    }
+    .lb-arrow:hover { background: rgba(255,255,255,.22); }
+    .lb-arrow:disabled { opacity: .2; pointer-events: none; }
+    .lb-arrow-prev { left: 1rem; }
+    .lb-arrow-next { right: 1rem; }
+
+    .lb-thumbs {
+      display: flex; gap: .5rem; padding: .9rem 1.5rem;
+      overflow-x: auto; flex-shrink: 0;
+      border-top: 1px solid rgba(255,255,255,.08);
+      scrollbar-width: thin;
+      scrollbar-color: rgba(255,255,255,.2) transparent;
+    }
+    .lb-thumb-item {
+      width: 64px; height: 48px; flex-shrink: 0;
+      object-fit: cover; border-radius: 2px; cursor: pointer;
+      opacity: .45; border: 1.5px solid transparent;
+      transition: opacity .2s, border-color .2s;
+    }
+    .lb-thumb-item:hover { opacity: .75; }
+    .lb-thumb-item.lb-thumb-active { opacity: 1; border-color: var(--color-accent); }
+    .lb-thumb-placeholder {
+      width: 64px; height: 48px; flex-shrink: 0;
+      background: #2a2520; border-radius: 2px; cursor: pointer;
+      opacity: .45; border: 1.5px solid transparent;
+      display: flex; align-items: center; justify-content: center;
+      font-size: .55rem; color: rgba(255,255,255,.3);
+      letter-spacing: .06em; text-transform: uppercase;
+      transition: opacity .2s, border-color .2s;
+    }
+    .lb-thumb-placeholder:hover { opacity: .75; }
+    .lb-thumb-placeholder.lb-thumb-active { opacity: 1; border-color: var(--color-accent); }
+
+    .lb-desc-bar {
+      padding: .5rem 1.5rem .9rem; flex-shrink: 0;
+    }
+    .lb-desc-bar p {
+      font-size: .87rem; color: rgba(255,255,255,.45);
+      line-height: 1.6; margin: 0;
     }
 
     @media (max-width: 700px) {
-      .lb-nav.lb-prev { left: .3rem; }
-      .lb-nav.lb-next { right: .3rem; }
-      .lb-project-title { font-size: 1.1rem; }
+      .lb-arrow-prev { left: .3rem; }
+      .lb-arrow-next { right: .3rem; }
+      .lb-title { font-size: 1rem; }
     }
   </style>
 </head>
@@ -221,7 +241,6 @@
         <div class="divider"></div>
         <p>Each project is a unique story — shaped by the client's personality, lifestyle, and aspirations.</p>
       </div>
-
       <div class="filter-bar" id="filter-bar"></div>
       <div class="projects-grid" id="projects-grid"></div>
     </div>
@@ -238,176 +257,226 @@
     </div>
   </section>
 
-  <!-- LIGHTBOX -->
-  <div class="lb-overlay" id="lb-overlay" role="dialog" aria-modal="true" aria-label="Project image gallery">
+  <!-- ── LIGHTBOX MARKUP ── -->
+  <div id="lb-overlay" role="dialog" aria-modal="true" aria-label="Project image gallery">
     <div class="lb-header">
-      <div class="lb-header-left">
-        <p class="lb-project-title" id="lb-title"></p>
-        <p class="lb-counter" id="lb-counter"></p>
+      <div>
+        <p class="lb-title"  id="lb-title">Project</p>
+        <p class="lb-counter" id="lb-counter">1 of 1</p>
       </div>
-      <button class="lb-close" id="lb-close" aria-label="Close gallery">✕</button>
+      <button class="lb-close-btn" id="lb-close" aria-label="Close">&#10005;</button>
     </div>
-    <div class="lb-main">
-      <button class="lb-nav lb-prev" id="lb-prev" aria-label="Previous image">&#8592;</button>
-      <div class="lb-img-wrap" id="lb-img-wrap"></div>
-      <button class="lb-nav lb-next" id="lb-next" aria-label="Next image">&#8594;</button>
+    <div class="lb-stage">
+      <button class="lb-arrow lb-arrow-prev" id="lb-prev" aria-label="Previous">&#8592;</button>
+      <div class="lb-img-box" id="lb-img-box"></div>
+      <button class="lb-arrow lb-arrow-next" id="lb-next" aria-label="Next">&#8594;</button>
     </div>
-    <div class="lb-thumbnails" id="lb-thumbs"></div>
-    <div class="lb-info">
-      <p class="lb-desc" id="lb-desc"></p>
+    <div class="lb-thumbs" id="lb-thumbs"></div>
+    <div class="lb-desc-bar">
+      <p id="lb-desc"></p>
     </div>
   </div>
 
   <footer id="site-footer"></footer>
   <div class="float-social" id="float-social"></div>
 
+  <!-- load config first, then main.js for nav/footer, then projects logic -->
   <script src="js/config.js"></script>
   <script src="js/main.js"></script>
   <script>
-  (function() {
-    // ── State ─────────────────────────────────────────────────────
-    let currentProject = null;
-    let currentIdx     = 0;
 
-    // ── Render projects grid ──────────────────────────────────────
-    function renderProjects(cat) {
-      const grid = document.getElementById('projects-grid');
-      const items = cat === 'All'
-        ? SITE.projects
-        : SITE.projects.filter(p => p.category === cat);
+    /* ═══════════════════════════════════════════════════════════
+       PROJECTS PAGE — grid + filter + lightbox
+       All functions are on window scope (no IIFE) so onclick=""
+       attributes in dynamically-created HTML can reach them.
+    ═══════════════════════════════════════════════════════════ */
 
-      grid.innerHTML = items.map((p, i) => {
-        const coverPath = `images/projects/${p.folder}/${p.images[0]}`;
-        const count = p.images.length;
-        return `
-          <div class="project-card reveal" onclick="openLightbox(${SITE.projects.indexOf(p)})">
-            <div class="project-card__img-wrap">
-              <img class="project-card__img"
-                   src="${coverPath}"
-                   alt="${p.title}"
-                   loading="lazy"
-                   onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-              <div class="project-card__img-placeholder" style="display:none;">SD</div>
-              <span class="project-card__category">${p.category}</span>
-              ${count > 1 ? `<span class="project-card__count">${count} photos</span>` : ''}
-            </div>
-            <div class="project-card__body">
-              <div class="project-card__title">${p.title}</div>
-              <p class="project-card__desc">${p.description}</p>
-              <div class="project-card__tags">${p.tags.map(t => `<span class="tag">${t}</span>`).join('')}</div>
-              <span class="project-card__cta">View Project</span>
-            </div>
-          </div>`;
-      }).join('');
-
-      // Re-init scroll reveal
-      if (typeof initScrollEffects === 'function') initScrollEffects();
-    }
-
-    // ── Filter bar ───────────────────────────────────────────────
-    const categories = ['All', 'Residential', 'Architecture', 'Commercial'];
-    const bar = document.getElementById('filter-bar');
-    bar.innerHTML = categories.map((c, i) =>
-      `<button class="filter-btn${i === 0 ? ' active' : ''}" data-cat="${c}">${c}</button>`
-    ).join('');
-    bar.addEventListener('click', e => {
-      const btn = e.target.closest('.filter-btn');
-      if (!btn) return;
-      bar.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      renderProjects(btn.dataset.cat);
-    });
-
-    renderProjects('All');
-
-    // ── Lightbox ─────────────────────────────────────────────────
-    window.openLightbox = function(projectIdx) {
-      currentProject = SITE.projects[projectIdx];
-      currentIdx     = 0;
-      renderLightbox();
-      document.getElementById('lb-overlay').classList.add('open');
-      document.body.style.overflow = 'hidden';
+    /* ── 1. LIGHTBOX STATE ─────────────────────────────────── */
+    var LB = {
+      project : null,
+      idx     : 0
     };
 
-    function renderLightbox() {
-      const p = currentProject;
-      document.getElementById('lb-title').textContent   = p.title;
-      document.getElementById('lb-desc').textContent    = p.description;
-      updateLightboxImage();
-      renderThumbnails();
+    /* ── 2. OPEN LIGHTBOX ──────────────────────────────────── */
+    function openLightbox(projectIdx) {
+      LB.project = SITE.projects[projectIdx];
+      LB.idx     = 0;
+
+      document.getElementById('lb-title').textContent = LB.project.title;
+      document.getElementById('lb-desc').textContent  = LB.project.description;
+
+      lbShowImage();
+      lbRenderThumbs();
+
+      document.getElementById('lb-overlay').classList.add('lb-open');
+      document.body.style.overflow = 'hidden';
     }
 
-    function updateLightboxImage() {
-      const p    = currentProject;
-      const wrap = document.getElementById('lb-img-wrap');
-      const src  = `images/projects/${p.folder}/${p.images[currentIdx]}`;
-      const total = p.images.length;
+    /* ── 3. SHOW CURRENT IMAGE ─────────────────────────────── */
+    function lbShowImage() {
+      var p     = LB.project;
+      var total = p.images.length;
+      var src   = 'images/projects/' + p.folder + '/' + p.images[LB.idx];
 
       document.getElementById('lb-counter').textContent =
-        `Image ${currentIdx + 1} of ${total}`;
-      document.getElementById('lb-prev').disabled = currentIdx === 0;
-      document.getElementById('lb-next').disabled = currentIdx === total - 1;
+        'Image ' + (LB.idx + 1) + ' of ' + total;
 
-      // Try loading the image; fall back to placeholder
-      wrap.innerHTML = `
-        <img src="${src}"
-             alt="${p.title} – image ${currentIdx + 1}"
-             onerror="this.style.display='none';document.getElementById('lb-placeholder').style.display='flex';">
-        <div id="lb-placeholder" class="lb-img-placeholder" style="display:none;">
-          <div class="plc-icon">SD</div>
-          <div class="plc-text">Place your image in<br>images/projects/${p.folder}/</div>
-        </div>`;
+      document.getElementById('lb-prev').disabled = (LB.idx === 0);
+      document.getElementById('lb-next').disabled = (LB.idx === total - 1);
 
-      // Update thumbnail active state
-      document.querySelectorAll('.lb-thumb, .lb-thumb-placeholder').forEach((el, i) => {
-        el.classList.toggle('active', i === currentIdx);
+      /* Build image element with fallback */
+      var box = document.getElementById('lb-img-box');
+      box.innerHTML = '';
+
+      var img = document.createElement('img');
+      img.alt = p.title + ' – image ' + (LB.idx + 1);
+      img.src = src;
+      img.onerror = function() {
+        box.innerHTML =
+          '<div class="lb-img-fallback">' +
+            '<span>SD</span>' +
+            '<span>Place your images in<br>images/projects/' + p.folder + '/</span>' +
+          '</div>';
+      };
+      box.appendChild(img);
+
+      /* Sync thumbnail highlights */
+      var thumbs = document.querySelectorAll('#lb-thumbs .lb-thumb-item, #lb-thumbs .lb-thumb-placeholder');
+      thumbs.forEach(function(el, i) {
+        el.classList.toggle('lb-thumb-active', i === LB.idx);
       });
     }
 
-    function renderThumbnails() {
-      const p = currentProject;
-      const thumbsEl = document.getElementById('lb-thumbs');
-      thumbsEl.innerHTML = p.images.map((img, i) => {
-        const src = `images/projects/${p.folder}/${img}`;
-        return `<img class="lb-thumb${i === 0 ? ' active' : ''}"
-                     src="${src}"
-                     alt="Thumbnail ${i+1}"
-                     loading="lazy"
-                     onclick="jumpTo(${i})"
-                     onerror="this.outerHTML='<div class=\\'lb-thumb-placeholder${i === 0 ? ' active' : ''}\\' onclick=\\'jumpTo(${i})\\'>IMG ${i+1}</div>';">`;
-      }).join('');
+    /* ── 4. RENDER THUMBNAILS ──────────────────────────────── */
+    function lbRenderThumbs() {
+      var p = LB.project;
+      var container = document.getElementById('lb-thumbs');
+      container.innerHTML = '';
+
+      p.images.forEach(function(imgFile, i) {
+        var src = 'images/projects/' + p.folder + '/' + imgFile;
+
+        var thumb = document.createElement('img');
+        thumb.className = 'lb-thumb-item' + (i === 0 ? ' lb-thumb-active' : '');
+        thumb.src   = src;
+        thumb.alt   = 'Thumbnail ' + (i + 1);
+        thumb.loading = 'lazy';
+        thumb.setAttribute('data-idx', i);
+        thumb.onclick = function() { lbJumpTo(parseInt(this.getAttribute('data-idx'))); };
+        thumb.onerror = function() {
+          var ph = document.createElement('div');
+          ph.className = 'lb-thumb-placeholder' + (i === 0 ? ' lb-thumb-active' : '');
+          ph.textContent = i + 1;
+          ph.setAttribute('data-idx', i);
+          ph.onclick = function() { lbJumpTo(parseInt(this.getAttribute('data-idx'))); };
+          this.parentNode.replaceChild(ph, this);
+        };
+        container.appendChild(thumb);
+      });
     }
 
-    window.jumpTo = function(idx) {
-      currentIdx = idx;
-      updateLightboxImage();
+    /* ── 5. JUMP TO SPECIFIC IMAGE ─────────────────────────── */
+    function lbJumpTo(idx) {
+      LB.idx = idx;
+      lbShowImage();
+      /* Scroll thumbnail into view */
+      var thumbs = document.querySelectorAll('#lb-thumbs .lb-thumb-item, #lb-thumbs .lb-thumb-placeholder');
+      if (thumbs[idx]) {
+        thumbs[idx].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+      }
+    }
+
+    /* ── 6. CLOSE LIGHTBOX ─────────────────────────────────── */
+    function closeLightbox() {
+      document.getElementById('lb-overlay').classList.remove('lb-open');
+      document.body.style.overflow = '';
+      LB.project = null;
+    }
+
+    /* ── 7. WIRE UP LIGHTBOX CONTROLS ─────────────────────── */
+    document.getElementById('lb-close').onclick = closeLightbox;
+
+    document.getElementById('lb-prev').onclick = function() {
+      if (LB.idx > 0) { LB.idx--; lbShowImage(); }
     };
 
-    document.getElementById('lb-prev').addEventListener('click', () => {
-      if (currentIdx > 0) { currentIdx--; updateLightboxImage(); }
-    });
-    document.getElementById('lb-next').addEventListener('click', () => {
-      if (currentIdx < currentProject.images.length - 1) { currentIdx++; updateLightboxImage(); }
-    });
-    document.getElementById('lb-close').addEventListener('click', closeLightbox);
-    document.getElementById('lb-overlay').addEventListener('click', e => {
-      if (e.target === document.getElementById('lb-overlay')) closeLightbox();
-    });
+    document.getElementById('lb-next').onclick = function() {
+      if (LB.project && LB.idx < LB.project.images.length - 1) {
+        LB.idx++;
+        lbShowImage();
+      }
+    };
 
-    function closeLightbox() {
-      document.getElementById('lb-overlay').classList.remove('open');
-      document.body.style.overflow = '';
-    }
+    /* Close when clicking backdrop (outside the content) */
+    document.getElementById('lb-overlay').onclick = function(e) {
+      if (e.target === this) closeLightbox();
+    };
 
-    // Keyboard navigation
-    document.addEventListener('keydown', e => {
-      if (!document.getElementById('lb-overlay').classList.contains('open')) return;
+    /* Keyboard navigation */
+    document.addEventListener('keydown', function(e) {
+      if (!document.getElementById('lb-overlay').classList.contains('lb-open')) return;
       if (e.key === 'ArrowLeft')  document.getElementById('lb-prev').click();
       if (e.key === 'ArrowRight') document.getElementById('lb-next').click();
       if (e.key === 'Escape')     closeLightbox();
     });
 
-  })();
+    /* ── 8. RENDER PROJECT CARDS ───────────────────────────── */
+    function renderCards(category) {
+      var list = category === 'All'
+        ? SITE.projects
+        : SITE.projects.filter(function(p) { return p.category === category; });
+
+      var grid = document.getElementById('projects-grid');
+      grid.innerHTML = list.map(function(p) {
+        /* Find this project's index in the master array for the lightbox */
+        var masterIdx = SITE.projects.indexOf(p);
+        var cover     = 'images/projects/' + p.folder + '/' + p.images[0];
+        var count     = p.images.length;
+
+        return '<div class="project-card reveal" onclick="openLightbox(' + masterIdx + ')">' +
+          '<div class="project-card__img-wrap">' +
+            '<img class="project-card__img" src="' + cover + '" alt="' + p.title + '" loading="lazy" ' +
+              'onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'flex\'">' +
+            '<div class="project-card__img-placeholder" style="display:none">SD</div>' +
+            '<span class="project-card__category">' + p.category + '</span>' +
+            (count > 1 ? '<span class="project-card__count">' + count + ' photos</span>' : '') +
+          '</div>' +
+          '<div class="project-card__body">' +
+            '<div class="project-card__title">' + p.title + '</div>' +
+            '<p class="project-card__desc">' + p.description + '</p>' +
+            '<div class="project-card__tags">' +
+              p.tags.map(function(t){ return '<span class="tag">' + t + '</span>'; }).join('') +
+            '</div>' +
+            '<span class="project-card__cta">View Project</span>' +
+          '</div>' +
+        '</div>';
+      }).join('');
+
+      /* Re-run scroll reveal on freshly injected cards */
+      if (typeof initScrollEffects === 'function') initScrollEffects();
+    }
+
+    /* ── 9. FILTER BAR ─────────────────────────────────────── */
+    var CATEGORIES = ['All', 'Residential', 'Architecture', 'Commercial'];
+    var bar = document.getElementById('filter-bar');
+    bar.innerHTML = CATEGORIES.map(function(c, i) {
+      return '<button class="filter-btn' + (i === 0 ? ' active' : '') +
+             '" data-cat="' + c + '">' + c + '</button>';
+    }).join('');
+
+    bar.addEventListener('click', function(e) {
+      var btn = e.target.closest('.filter-btn');
+      if (!btn) return;
+      bar.querySelectorAll('.filter-btn').forEach(function(b) {
+        b.classList.remove('active');
+      });
+      btn.classList.add('active');
+      renderCards(btn.dataset.cat);
+    });
+
+    /* ── 10. INITIAL RENDER ────────────────────────────────── */
+    renderCards('All');
+
   </script>
 </body>
 </html>
