@@ -116,7 +116,7 @@ const SITE = {
       category:    "Residential",
       description: "A spacious 4 BHK bungalow interior designed for a family in Ahmedabad. The project integrates warm material palettes, custom joinery, and a seamless flow between living, dining, and entertainment zones. Each room balances comfort with elegance, reflecting the family's lifestyle and aspirations.",
       folder:      "4bhk-bungalow-ahmedabad",
-      images:      ["placeholder.jpg"],
+      images:      ["1.jpeg","2.jpeg"],
       // ↑ Add more: ["placeholder.jpg", "living-room.jpg", "master-bedroom.jpg"]
       tags:        ["4 BHK", "Bungalow", "Ahmedabad", "Residential"],
     },
@@ -149,7 +149,7 @@ const SITE = {
       category:    "Residential",
       description: "An opulent 4 BHK luxury apartment interior crafted with the finest materials and bespoke detailing. The design language blends contemporary architecture with classic luxury — featuring marble flooring, velvet upholstery, backlit wall panels, and custom crafted wardrobes. Every room is a statement of refined living.",
       folder:      "satish-luxury-4bhk",
-      images:      ["1.jpeg","2.jpeg"],
+      images:      ["placeholder.jpg"],
       tags:        ["4 BHK", "Luxury", "Premium Interiors", "Bespoke"],
     },
 
