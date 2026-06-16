@@ -1,0 +1,8 @@
+<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="600" fill="#2c3e50"/>
+  <rect x="0" y="480" width="800" height="120" fill="#1a252f" opacity="0.85"/>
+  <text x="400" y="230" font-family="Georgia,serif" font-size="80" fill="white" opacity="0.15" text-anchor="middle" font-weight="bold">SD</text>
+  <text x="400" y="520" font-family="Arial,sans-serif" font-size="22" fill="white" text-anchor="middle" font-weight="bold">4 BHK Residence Bungalow</text>
+  <text x="400" y="550" font-family="Arial,sans-serif" font-size="14" fill="rgba(255,255,255,0.7)" text-anchor="middle">Swati Deshpande Designs</text>
+  <rect x="340" y="260" width="120" height="2" fill="rgba(255,255,255,0.4)"/>
+</svg>
