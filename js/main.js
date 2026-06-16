@@ -1,4 +1,3 @@
-
 /**
  * SWATI DESHPANDE DESIGNS — MAIN SCRIPT
  * Reads from config.js and renders dynamic content across all pages.
@@ -74,7 +73,7 @@ function injectFloatingButtons() {
   const el = document.getElementById('float-social');
   if (!el) return;
   el.innerHTML = `
-    <a class="float-btn float-whatsapp" href="https://wa.me/918320941691" target="_blank" rel="noopener" title="WhatsApp">
+    <a class="float-btn float-whatsapp" href="https://wa.me/${SITE.contact.whatsapp}" target="_blank" rel="noopener" title="WhatsApp">
       <svg viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.089.537 4.055 1.475 5.765L.057 23.882l6.284-1.645A11.937 11.937 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.853 0-3.614-.5-5.143-1.372l-.369-.218-3.728.977.995-3.637-.24-.374A9.963 9.963 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
     </a>
     <a class="float-btn float-instagram" href="https://instagram.com/${SITE.contact.instagram}" target="_blank" rel="noopener" title="Instagram">
@@ -186,7 +185,8 @@ function renderProjects() {
   const bar  = document.getElementById('filter-bar');
   if (!grid) return;
 
-  const categories = ['All', ...new Set(SITE.projects.map(p => p.category))];
+  // Fixed category order — no Renovation
+  const categories = ['All', 'Residential', 'Architecture', 'Commercial'];
 
   bar.innerHTML = categories.map((c, i) =>
     `<button class="filter-btn${i===0?' active':''}" data-cat="${c}">${c}</button>`).join('');
@@ -280,19 +280,40 @@ function renderContact() {
    HELPERS
    ============================================================ */
 function projectCard(p) {
-  const img = p.image
-    ? `<img class="project-card__img" src="${p.image}" alt="${p.title}" loading="lazy" onerror="this.style.background='#f2ede6';this.style.minHeight='260px';this.removeAttribute('src');">`
-    : `<div class="project-card__img" style="background:linear-gradient(135deg,#f2ede6,#ddd5c8);min-height:260px;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1rem;color:#b8860b;letter-spacing:.12em;">PROJECT IMAGE</div>`;
+  // Support both old (p.image) and new (p.folder + p.images) project formats
+  const masterIdx = SITE.projects.indexOf(p);
+  const hasNewFormat = p.folder && p.images && p.images.length > 0;
+  const coverSrc = hasNewFormat
+    ? `images/projects/${p.folder}/${p.images[0]}`
+    : (p.image || '');
+  const count = hasNewFormat ? p.images.length : 0;
+
+  const imgEl = coverSrc
+    ? `<img class="project-card__img" src="${coverSrc}" alt="${p.title}" loading="lazy"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+       <div class="project-card__img-placeholder" style="display:none;width:100%;height:240px;background:linear-gradient(135deg,#f2ede6,#ddd5c8);align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1rem;color:#b8860b;letter-spacing:.12em;">SD</div>`
+    : `<div class="project-card__img-placeholder" style="width:100%;height:240px;background:linear-gradient(135deg,#f2ede6,#ddd5c8);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1rem;color:#b8860b;letter-spacing:.12em;">SD</div>`;
+
+  const countBadge = count > 1
+    ? `<span class="project-card__count" style="position:absolute;top:1rem;right:1rem;background:rgba(26,23,20,0.72);padding:.25rem .7rem;font-size:.68rem;color:#fff;border-radius:2px;">${count} photos</span>`
+    : '';
+
+  const clickAttr = hasNewFormat
+    ? `onclick="if(window.openLightbox) openLightbox(${masterIdx})" style="cursor:pointer"`
+    : '';
+
   return `
-    <div class="project-card reveal">
+    <div class="project-card reveal" ${clickAttr}>
       <div class="project-card__img-wrap">
-        ${img}
+        ${imgEl}
         <span class="project-card__category">${p.category}</span>
+        ${countBadge}
       </div>
       <div class="project-card__body">
         <div class="project-card__title">${p.title}</div>
         <p class="project-card__desc">${p.description}</p>
         <div class="project-card__tags">${p.tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div>
+        ${hasNewFormat ? '<span class="project-card__cta" style="display:inline-flex;align-items:center;gap:.4rem;font-size:.72rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--color-accent);">View Project &#8594;</span>' : ''}
       </div>
     </div>`;
 }
