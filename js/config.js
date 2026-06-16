@@ -149,7 +149,7 @@ const SITE = {
       category:    "Residential",
       description: "An opulent 4 BHK luxury apartment interior crafted with the finest materials and bespoke detailing. The design language blends contemporary architecture with classic luxury — featuring marble flooring, velvet upholstery, backlit wall panels, and custom crafted wardrobes. Every room is a statement of refined living.",
       folder:      "satish-luxury-4bhk",
-      images:      ["placeholder.jpg"],
+      images:      ["1.jpeg","2.jpeg"],
       tags:        ["4 BHK", "Luxury", "Premium Interiors", "Bespoke"],
     },
 
