@@ -39,16 +39,16 @@ const SITE = {
 
   // ── SOCIAL & CONTACT ───────────────────────────────────────
   contact: {
-    phone:     "8866507441",
+    phone:     "8320941691",
     email:     "swatideshpande264@gmail.com",
-    location:  "PCMC / Pune, Maharashtra, Ahmedabad",
+    location:  "PCMC / Pune, Ahmedabad",
     whatsapp:  "918320941691",
     instagram: "swatideshpande264",
   },
 
   // ── HOME PAGE ──────────────────────────────────────────────
   home: {
-    headline:    "Architectural & Interior Designer in Pune",
+    headline:    "Architectural & Interior Designer in Pune/Ahmedabad",
     subheadline: "Designing functional, practical and aesthetically pleasing spaces with 12+ years of experience.",
     intro:       "Hi, I'm Swati Deshpande — an Architectural and Interior Designer based in PCMC/Pune. I specialize in residential interiors, space planning, and execution support, creating spaces that balance functionality with timeless aesthetics.",
     cta_primary:   { text: "View My Work",  href: "projects.html" },
