@@ -39,7 +39,7 @@ const SITE = {
 
   // ── SOCIAL & CONTACT ───────────────────────────────────────
   contact: {
-    phone:     "8320941691, 8866507441",
+    phone:     "8866507441",
     email:     "swatideshpande264@gmail.com",
     location:  "PCMC / Pune, Maharashtra",
     whatsapp:  "918320941691",
