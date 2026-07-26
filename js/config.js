@@ -41,7 +41,7 @@ const SITE = {
   contact: {
     phone:     "8866507441",
     email:     "swatideshpande264@gmail.com",
-    location:  "PCMC / Pune, Maharashtra",
+    location:  "PCMC / Pune, Maharashtra, Ahmedabad",
     whatsapp:  "918320941691",
     instagram: "swatideshpande264",
   },
